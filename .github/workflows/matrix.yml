@@ -8,7 +8,11 @@ jobs:
     runs-on: 'ubuntu-latest'
     strategy:
       matrix:
-        accounts: [account1, account2]
-        tags: [1,2,3]
+        account: [account1, account2]
+        include: 
+          - account: account1
+            tag: [1,2,3]
+          - account: account2
+            tag: [1,2,3]
     steps:
-      - run: echo "${{ matrix.accounts }}:${{ matrix.tag }}"
+      - run: echo "${{ matrix.account }}:${{ matrix.tag }}"
