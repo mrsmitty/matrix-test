@@ -1,0 +1,16 @@
+name: matrix-test
+on:
+  push:
+
+jobs:
+  build-container:
+    runs-on: 'ubuntu-latest'
+    strategy:
+      matrix:
+        accounts: [account1, account2]
+        include:
+          - tag: 1
+          - tag: 2
+          - tag: 3
+    steps:
+      - run: echo "${{ matrix.account }}:${{ matrix.tag }}"
