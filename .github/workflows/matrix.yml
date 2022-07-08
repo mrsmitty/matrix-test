@@ -1,4 +1,5 @@
 name: matrix-test
+
 on:
   push:
 
@@ -8,9 +9,6 @@ jobs:
     strategy:
       matrix:
         accounts: [account1, account2]
-        include:
-          - tag: 1
-          - tag: 2
-          - tag: 3
+        tags: [1,2,3]
     steps:
-      - run: echo "${{ matrix.account }}:${{ matrix.tag }}"
+      - run: echo "${{ matrix.accounts }}:${{ matrix.tag }}"
