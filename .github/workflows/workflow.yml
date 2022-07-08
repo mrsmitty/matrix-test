@@ -1,0 +1,24 @@
+on:
+  workflow_call:
+    inputs:
+      tags:
+        type: string
+        required: true
+
+jobs:
+  build-container-dev:
+    runs-on: 'ubuntu-latest'
+    strategy:
+      matrix:
+        tag: ${{fromJSON(inputs.tags)}}
+    steps:
+      - run: echo "AccountDev:${{ matrix.tag }}"
+
+  build-container-prd:
+    runs-on: 'ubuntu-latest'
+    strategy:
+      matrix:
+        tag: ${{fromJSON(inputs.tags)}}
+    steps:
+      - run: echo "AccountDev:${{ matrix.tag }}"
+      
